@@ -2,8 +2,21 @@
 import BaseLayout from "../layouts/BaseLayout.astro"
 import Tile from "../layouts/Tile.astro"
 import MoreTile from "../layouts/MoreTile.astro"
-const allPosts = await Astro.glob("../pages/posts/*.md")
-const Blogs = await Astro.glob("../pages/posts/blogs/**/*.md")
+import type { MarkdownInstance } from "astro"
+
+type Post = {
+  title: string
+  pubDate: string
+  tags: string[]
+  cover?: string | Record<string, string>
+}
+
+const allPosts = Object.values(
+  import.meta.glob<MarkdownInstance<Post>>("./posts/*.md", { eager: true }),
+)
+const Blogs = Object.values(
+  import.meta.glob<MarkdownInstance<Post>>("./posts/blogs/**/*.md", { eager: true }),
+)
 allPosts.sort((a, b) => {
   if (
     a.frontmatter.title

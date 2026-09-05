@@ -47,7 +47,7 @@
     "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@astrojs/markdown-remark": "^5.3.0",
+    "@astrojs/markdown-remark": "7.2.1",
     "@cspell/eslint-plugin": "^8.19.2",
     "@eslint/js": "^9.25.1",
     "@hey-api/openapi-ts": "^0.97.3",
